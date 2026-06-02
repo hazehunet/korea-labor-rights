@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean Labor Rights for International Students</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px 30px;
+  }
+  header h1 { font-size: 1.9em; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 1em; opacity: 0.85; }
+
+  .lang-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: #1a365d;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+  .lang-tab {
+    padding: 14px 28px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95em;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .lang-tab:hover { color: white; background: rgba(255,255,255,0.08); }
+  .lang-tab.active {
+    color: white;
+    border-bottom-color: #63b3ed;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .lang-panel { display: none; }
+  .lang-panel.active { display: block; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 30px 20px 60px; }
+
+  .intro-box {
+    background: white;
+    border-left: 5px solid #3182ce;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #2d3748;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .topic-grid { display: grid; gap: 18px; }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3em;
+    flex-shrink: 0;
+  }
+  .card-title { flex: 1; }
+  .card-title h3 { font-size: 1em; font-weight: 700; color: #1a202c; margin-bottom: 2px; }
+  .card-title span { font-size: 0.82em; color: #718096; }
+  .card-toggle { font-size: 1.1em; color: #a0aec0; transition: transform 0.2s; }
+  .card.open .card-toggle { transform: rotate(180deg); }
+
+  .card-body {
+    display: none;
+    padding: 20px 22px;
+    line-height: 1.75;
+    font-size: 0.93em;
+    color: #2d3748;
+  }
+  .card.open .card-body { display: block; }
+
+  .card-body ul { padding-left: 20px; margin: 8px 0; }
+  .card-body li { margin-bottom: 6px; }
+  .card-body strong { color: #1a202c; }
+  .card-body .highlight {
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  .card-body .warning {
+    background: #fffaf0;
+    border: 1px solid #fbd38d;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  .card-body .danger {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  .card-body .success {
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .badge-blue { background: #ebf8ff; color: #2b6cb0; }
+  .badge-green { background: #f0fff4; color: #276749; }
+  .badge-red { background: #fff5f5; color: #c53030; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.82em;
+    color: #718096;
+    border-top: 1px solid #e2e8f0;
+    background: white;
+  }
+
+  /* Color scheme per card */
+  .c1 .card-icon { background: #ebf8ff; }
+  .c2 .card-icon { background: #f0fff4; }
+  .c3 .card-icon { background: #fef3c7; }
+  .c4 .card-icon { background: #ede9fe; }
+  .c5 .card-icon { background: #fce7f3; }
+  .c6 .card-icon { background: #fff7ed; }
+  .c7 .card-icon { background: #ecfdf5; }
+  .c8 .card-icon { background: #fff1f2; }
+  .c9 .card-icon { background: #eff6ff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇰🇷 Korean Labor Rights for International Students</h1>
+  <p>Know your rights — in your language</p>
+</header>
+
+<div class="lang-tabs">
+  <div class="lang-tab active" onclick="switchLang('en')">🇬🇧 English</div>
+  <div class="lang-tab" onclick="switchLang('vi')">🇻🇳 Tiếng Việt</div>
+  <div class="lang-tab" onclick="switchLang('my')">🇲🇲 မြန်မာ</div>
+  <div class="lang-tab" onclick="switchLang('zh')">🇨🇳 中文</div>
+</div>
+
+<!-- ============================================================ ENGLISH ============================================================ -->
+<div id="panel-en" class="lang-panel active">
+<div class="container">
+  <div class="intro-box">
+    ℹ️ <strong>For International Students Working in Korea</strong><br>
+    As a foreign student in Korea, you have the same labor rights as Korean workers. This guide covers 9 essential topics to help you work safely and legally.
+  </div>
+  <div class="topic-grid">
+
+    <!-- 1 -->
+    <div class="card c1" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">
+          <h3>① Work Permit Conditions</h3>
+          <span>D-2 Visa work hour limits & how to apply</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>D-2 visa holders may work <strong>up to 20 hours per week</strong> during the academic semester.</li>
+          <li>During <strong>official vacation periods</strong>, there is no hour restriction — you can work unlimited hours.</li>
+          <li>You must obtain a <strong>Work Permit (시간제 취업허가)</strong> from the Immigration Office before starting work.</li>
+          <li>Apply at your nearest <strong>Korea Immigration Service (HiKorea: hikorea.go.kr)</strong> or visit in person.</li>
+          <li>Required documents: Passport, alien registration card, enrollment certificate, and school consent letter.</li>
+        </ul>
+        <div class="highlight">⚠️ Working without a permit or exceeding hour limits can result in visa cancellation and deportation. Always check with your school's international office first.</div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card c2" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📝</div>
+        <div class="card-title">
+          <h3>② Employment Contract</h3>
+          <span>Written contract is mandatory</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Korean labor law <strong>requires a written employment contract</strong> for all workers, including foreign students.</li>
+          <li>The contract must include: wage amount, working hours, job description, workplace location, and payment date.</li>
+          <li>You are entitled to receive <strong>a copy of the signed contract</strong>.</li>
+          <li>If your employer refuses to provide a written contract, this is a <strong>legal violation</strong>.</li>
+        </ul>
+        <div class="warning">📢 You can report employers who refuse to provide a written contract to the <strong>Ministry of Employment and Labor (1350)</strong>.</div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card c3" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title">
+          <h3>③ Minimum Wage</h3>
+          <span>2026 rate: ₩10,320/hour</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>The 2026 minimum wage is <strong>₩10,320 per hour</strong>.</li>
+          <li><strong>Weekly Holiday Pay (주휴수당):</strong> If you work 15+ hours per week consistently, you are entitled to an additional day's pay each week even if you don't work that day.</li>
+          <li>Example: 20 hrs/week ÷ 5 days × 1 day holiday = 4 extra hours of pay per week.</li>
+          <li>Minimum wage applies to ALL workers regardless of nationality or visa status.</li>
+        </ul>
+        <div class="success">✅ Your effective hourly rate including 주휴수당 is approximately <strong>₩12,384/hour</strong> (₩10,320 × 1.2).</div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card c4" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">
+          <h3>④ Severance Pay (퇴직금)</h3>
+          <span>Foreign students may also qualify</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Severance pay applies if you worked <strong>1 year or more</strong> AND <strong>15+ hours per week on average</strong>.</li>
+          <li>This right applies equally to <strong>foreign students</strong> — nationality does not matter.</li>
+          <li>Amount: Approximately <strong>1 month's average wage per year worked</strong>.</li>
+          <li>Must be paid within 14 days of leaving the job.</li>
+        </ul>
+        <div class="highlight">📌 If your employer refuses to pay severance, you can file a complaint at the nearest Labor Office or via moel.go.kr.</div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card c5" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🧾</div>
+        <div class="card-title">
+          <h3>⑤ Tax Filing</h3>
+          <span>May–June: Comprehensive income tax return</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Comprehensive income tax return (종합소득세 신고) is filed every <strong>May 1 – June 30</strong>.</li>
+          <li>Foreign students who earned income in Korea must file.</li>
+          <li><strong>Tax refunds are possible</strong> if you overpaid through withholding throughout the year.</li>
+          <li>File online at <strong>hometax.go.kr</strong> (National Tax Service) or call <strong>126</strong> for help.</li>
+          <li>Some income may be exempt under Korea's tax treaties with your home country.</li>
+        </ul>
+        <div class="success">💡 Even if you only worked part-time, filing a return could get you a refund. Don't skip it!</div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card c6" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">
+          <h3>⑥ Freelancer Warning</h3>
+          <span>3.3% withholding — know your rights</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Some employers classify workers as "freelancers" and withhold only 3.3% tax (freelancer rate).</li>
+          <li>If you work regular hours, follow schedules, and are managed by a supervisor — <strong>you are an employee, not a freelancer</strong>.</li>
+          <li>Misclassifying employees as freelancers is <strong>illegal under Korean labor law</strong>.</li>
+          <li>As a misclassified employee, you may still be entitled to minimum wage, 주휴수당, severance, and 4-insurance coverage.</li>
+        </ul>
+        <div class="danger">🚨 If you suspect misclassification, report to the Labor Standards Inspection Office (1350) or moel.go.kr.</div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card c7" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">
+          <h3>⑦ Four Major Social Insurances</h3>
+          <span>Health, employment, industrial accident, pension</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Health Insurance (건강보험):</strong> Covers medical expenses. Required for most workers.</li>
+          <li><strong>Employment Insurance (고용보험):</strong> Provides unemployment benefits. Foreign students on D-2 visas can be enrolled.</li>
+          <li><strong>Industrial Accident Insurance (산재보험):</strong> Covers work injuries. Applies to ALL workers regardless of visa status.</li>
+          <li><strong>National Pension (국민연금):</strong> Foreign nationals from countries with reciprocal agreements may be enrolled or exempt.</li>
+          <li>If your employer fails to enroll you, this is a violation and can be reported.</li>
+        </ul>
+        <div class="warning">📢 Report employers who fail to enroll workers in mandatory insurance to the <strong>National Health Insurance Service</strong> or call <strong>1350</strong>.</div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card c8" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📞</div>
+        <div class="card-title">
+          <h3>⑧ Unpaid Wage Response</h3>
+          <span>What to do if your employer doesn't pay</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Call <strong>1350</strong> — the Ministry of Employment and Labor hotline (available in multiple languages).</li>
+          <li>File an online complaint at <strong>moel.go.kr</strong> (Ministry of Employment and Labor website).</li>
+          <li>Keep records: save pay slips, bank transfers, work schedules, and text messages as evidence.</li>
+          <li>Free legal aid is available through the <strong>Korea Legal Aid Corporation (132)</strong>.</li>
+          <li>Time limit: File wage claims within <strong>3 years</strong> of the missed payment date.</li>
+        </ul>
+        <div class="success">✅ The government provides free counseling and support for wage theft cases. You are protected by law.</div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card c9" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">
+          <h3>⑨ Reporting Does NOT Affect Your Visa</h3>
+          <span>Your visa is safe when you exercise your rights</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Reporting labor violations does NOT affect your visa status.</strong></li>
+          <li>Korean law protects workers who file complaints — employers cannot retaliate legally.</li>
+          <li>Your visa status and residency are completely separate from labor dispute processes.</li>
+          <li>Immigration authorities do not penalize students for exercising their legal labor rights.</li>
+        </ul>
+        <div class="success">🛡️ Do not let fear of visa consequences stop you from claiming what you are legally owed. Your rights are protected.</div>
+        <div class="highlight">📌 Key contacts: Labor rights hotline <strong>1350</strong> | Tax inquiry <strong>NTS 126</strong> | Legal aid <strong>132</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ VIETNAMESE ============================================================ -->
+<div id="panel-vi" class="lang-panel">
+<div class="container">
+  <div class="intro-box">
+    ℹ️ <strong>Dành cho Sinh Viên Quốc Tế Làm Việc tại Hàn Quốc</strong><br>
+    Là sinh viên nước ngoài tại Hàn Quốc, bạn có quyền lao động tương đương với người lao động Hàn Quốc. Hướng dẫn này trình bày 9 chủ đề quan trọng để giúp bạn làm việc an toàn và hợp pháp.
+  </div>
+  <div class="topic-grid">
+
+    <div class="card c1" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">
+          <h3>① Điều Kiện Giấy Phép Lao Động</h3>
+          <span>Giới hạn giờ làm visa D-2 & cách xin phép</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Người có visa D-2 được làm việc <strong>tối đa 20 giờ/tuần</strong> trong học kỳ.</li>
+          <li>Trong <strong>kỳ nghỉ chính thức</strong>, không giới hạn giờ làm việc.</li>
+          <li>Phải xin <strong>Giấy phép lao động bán thời gian (시간제 취업허가)</strong> từ Cục Xuất nhập cảnh trước khi đi làm.</li>
+          <li>Nộp đơn tại <strong>HiKorea (hikorea.go.kr)</strong> hoặc đến trực tiếp văn phòng xuất nhập cảnh gần nhất.</li>
+          <li>Hồ sơ cần: Hộ chiếu, thẻ đăng ký ngoại kiều, giấy xác nhận nhập học, thư chấp thuận của trường.</li>
+        </ul>
+        <div class="highlight">⚠️ Làm việc không có giấy phép hoặc vượt quá giờ quy định có thể dẫn đến hủy visa và trục xuất.</div>
+      </div>
+    </div>
+
+    <div class="card c2" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📝</div>
+        <div class="card-title">
+          <h3>② Hợp Đồng Lao Động</h3>
+          <span>Hợp đồng bằng văn bản là bắt buộc</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Luật lao động Hàn Quốc <strong>bắt buộc ký hợp đồng bằng văn bản</strong> cho tất cả người lao động, kể cả sinh viên nước ngoài.</li>
+          <li>Hợp đồng phải ghi rõ: mức lương, giờ làm việc, mô tả công việc, địa điểm làm việc, ngày trả lương.</li>
+          <li>Bạn có quyền nhận <strong>một bản sao hợp đồng đã ký</strong>.</li>
+          <li>Nếu chủ lao động từ chối cung cấp hợp đồng bằng văn bản, đây là <strong>vi phạm pháp luật</strong>.</li>
+        </ul>
+        <div class="warning">📢 Bạn có thể tố cáo chủ lao động từ chối ký hợp đồng với <strong>Bộ Lao động (1350)</strong>.</div>
+      </div>
+    </div>
+
+    <div class="card c3" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title">
+          <h3>③ Lương Tối Thiểu</h3>
+          <span>Năm 2026: ₩10,320/giờ</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Lương tối thiểu năm 2026 là <strong>₩10,320/giờ</strong>.</li>
+          <li><strong>Phụ cấp ngày nghỉ tuần (주휴수당):</strong> Nếu bạn làm 15+ giờ/tuần liên tục, bạn được trả thêm tiền 1 ngày nghỉ mỗi tuần ngay cả khi không đi làm ngày đó.</li>
+          <li>Ví dụ: 20 giờ/tuần ÷ 5 ngày × 1 ngày = 4 giờ phụ cấp thêm mỗi tuần.</li>
+          <li>Lương tối thiểu áp dụng cho <strong>tất cả người lao động</strong> không phân biệt quốc tịch hay visa.</li>
+        </ul>
+        <div class="success">✅ Lương thực tế bao gồm 주휴수당 khoảng <strong>₩12,384/giờ</strong>.</div>
+      </div>
+    </div>
+
+    <div class="card c4" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">
+          <h3>④ Trợ Cấp Thôi Việc (퇴직금)</h3>
+          <span>Sinh viên nước ngoài cũng có thể được hưởng</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Được hưởng nếu làm việc <strong>từ 1 năm trở lên</strong> VÀ <strong>trung bình 15+ giờ/tuần</strong>.</li>
+          <li>Quyền này áp dụng bình đẳng cho <strong>sinh viên nước ngoài</strong> — không phân biệt quốc tịch.</li>
+          <li>Mức: Khoảng <strong>1 tháng lương bình quân cho mỗi năm làm việc</strong>.</li>
+          <li>Phải được thanh toán trong vòng 14 ngày sau khi nghỉ việc.</li>
+        </ul>
+        <div class="highlight">📌 Nếu chủ lao động từ chối trả, bạn có thể khiếu nại tại Văn phòng Lao động hoặc qua moel.go.kr.</div>
+      </div>
+    </div>
+
+    <div class="card c5" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🧾</div>
+        <div class="card-title">
+          <h3>⑤ Khai Thuế</h3>
+          <span>Tháng 5–6: Khai thuế thu nhập tổng hợp</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Khai thuế thu nhập tổng hợp (종합소득세) diễn ra từ <strong>1/5 – 30/6 hàng năm</strong>.</li>
+          <li>Sinh viên nước ngoài có thu nhập tại Hàn Quốc phải khai thuế.</li>
+          <li><strong>Có thể được hoàn thuế</strong> nếu bạn đã khấu trừ quá mức trong năm.</li>
+          <li>Khai trực tuyến tại <strong>hometax.go.kr</strong> hoặc gọi <strong>126</strong> để được hỗ trợ.</li>
+        </ul>
+        <div class="success">💡 Dù chỉ làm bán thời gian, bạn vẫn nên khai thuế để có thể nhận hoàn thuế!</div>
+      </div>
+    </div>
+
+    <div class="card c6" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">
+          <h3>⑥ Cảnh Báo Về Freelancer</h3>
+          <span>Khấu trừ 3.3% — cần biết quyền của bạn</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Một số chủ lao động gọi nhân viên là "freelancer" và chỉ khấu trừ 3.3% thuế.</li>
+          <li>Nếu bạn làm việc theo giờ cố định, tuân thủ lịch làm việc và có người quản lý — <strong>bạn là nhân viên chính thức, không phải freelancer</strong>.</li>
+          <li>Phân loại sai là hành vi <strong>vi phạm pháp luật lao động Hàn Quốc</strong>.</li>
+          <li>Bạn vẫn có thể được hưởng lương tối thiểu, 주휴수당, trợ cấp thôi việc và bảo hiểm 4 loại.</li>
+        </ul>
+        <div class="danger">🚨 Nếu nghi ngờ bị phân loại sai, báo cáo tới Phòng Thanh tra Lao động (1350) hoặc moel.go.kr.</div>
+      </div>
+    </div>
+
+    <div class="card c7" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">
+          <h3>⑦ Bốn Loại Bảo Hiểm Xã Hội</h3>
+          <span>Y tế, việc làm, tai nạn lao động, lương hưu</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Bảo hiểm y tế (건강보험):</strong> Chi trả chi phí y tế. Bắt buộc với hầu hết người lao động.</li>
+          <li><strong>Bảo hiểm việc làm (고용보험):</strong> Hỗ trợ thất nghiệp. Sinh viên D-2 có thể tham gia.</li>
+          <li><strong>Bảo hiểm tai nạn lao động (산재보험):</strong> Bồi thường tai nạn tại nơi làm việc. Áp dụng cho MỌI lao động.</li>
+          <li><strong>Lương hưu quốc gia (국민연금):</strong> Người nước ngoài từ các nước có hiệp định song phương có thể được đăng ký hoặc miễn.</li>
+        </ul>
+        <div class="warning">📢 Báo cáo chủ lao động không đăng ký bảo hiểm bắt buộc tới <strong>Cơ quan BHYT Quốc gia</strong> hoặc gọi <strong>1350</strong>.</div>
+      </div>
+    </div>
+
+    <div class="card c8" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📞</div>
+        <div class="card-title">
+          <h3>⑧ Xử Lý Khi Bị Quỵt Lương</h3>
+          <span>Cách xử lý khi chủ không trả lương</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Gọi <strong>1350</strong> — đường dây nóng của Bộ Lao động (hỗ trợ nhiều ngôn ngữ).</li>
+          <li>Nộp đơn khiếu nại trực tuyến tại <strong>moel.go.kr</strong>.</li>
+          <li>Lưu giữ bằng chứng: phiếu lương, chuyển khoản ngân hàng, lịch làm việc, tin nhắn.</li>
+          <li>Tư vấn pháp lý miễn phí qua <strong>Tổ chức Hỗ trợ Pháp lý Hàn Quốc (132)</strong>.</li>
+          <li>Thời hạn khiếu nại: trong vòng <strong>3 năm</strong> kể từ ngày bị nợ lương.</li>
+        </ul>
+        <div class="success">✅ Chính phủ cung cấp tư vấn và hỗ trợ miễn phí cho các trường hợp quỵt lương.</div>
+      </div>
+    </div>
+
+    <div class="card c9" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">
+          <h3>⑨ Tố Cáo KHÔNG Ảnh Hưởng Visa</h3>
+          <span>Visa của bạn an toàn khi bạn bảo vệ quyền lợi</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Tố cáo vi phạm lao động KHÔNG ảnh hưởng đến tình trạng visa của bạn.</strong></li>
+          <li>Pháp luật Hàn Quốc bảo vệ người lao động khi nộp đơn khiếu nại — chủ lao động không được trả thù.</li>
+          <li>Tình trạng visa và cư trú hoàn toàn tách biệt với quá trình giải quyết tranh chấp lao động.</li>
+          <li>Cơ quan xuất nhập cảnh không xử phạt sinh viên vì thực hiện quyền lao động hợp pháp.</li>
+        </ul>
+        <div class="success">🛡️ Đừng để nỗi lo về visa ngăn bạn đòi lại những gì bạn được hưởng theo pháp luật.</div>
+        <div class="highlight">📌 Liên hệ quan trọng: Đường dây lao động <strong>1350</strong> | Thuế <strong>126</strong> | Hỗ trợ pháp lý <strong>132</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ BURMESE ============================================================ -->
+<div id="panel-my" class="lang-panel">
+<div class="container">
+  <div class="intro-box">
+    ℹ️ <strong>ကိုရီးယားတွင် အလုပ်လုပ်နေသော နိုင်ငံတကာ သင်ကြားသူများအတွက်</strong><br>
+    ကိုရီးယားနိုင်ငံတွင် နိုင်ငံခြားသား ကျောင်းသားအဖြစ် သင်သည် ကိုရီးယားအလုပ်သမားများနှင့် တူညီသော အလုပ်သမားအခွင့်အရေးများ ရှိသည်။ ဤလမ်းညွှန်တွင် သင်ကို အကာအကွယ်ပေးသော အရေးကြီးသော ခေါင်းစဥ် ၉ ခုကို ဖော်ပြထားသည်။
+  </div>
+  <div class="topic-grid">
+
+    <div class="card c1" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">
+          <h3>① အလုပ်ခွင့်ပြုချက် သတ်မှတ်ချက်များ</h3>
+          <span>D-2 ဗီဇာ အလုပ်ချိန်ကန့်သတ်ချက် နှင့် လျှောက်ထားနည်း</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>D-2 ဗီဇာကိုင်ဆောင်သူများသည် တစ်ပတ်လျှင် <strong>နာရီ ၂၀ အထိသာ</strong> အလုပ်လုပ်နိုင်သည် (သင်တန်းကာလ)။</li>
+          <li><strong>တရားဝင် ပိတ်ရက်ကာလ</strong>တွင် နာရီကန့်သတ်ချက် မရှိ — အကန့်အသတ်မဲ့ အလုပ်လုပ်နိုင်သည်။</li>
+          <li>အလုပ်စမတိုင်မီ ရွှေ့ပြောင်းမှုရုံးမှ <strong>အချိန်ပိုင်းအလုပ်ခွင့်ပြုချက် (시간제 취업허가)</strong> ရယူရမည်။</li>
+          <li><strong>HiKorea (hikorea.go.kr)</strong> တွင် အွန်လိုင်းလျှောက်ထားနိုင်သည် သို့မဟုတ် ရွှေ့ပြောင်းမှုရုံးသို့ တိုက်ရိုက်သွားနိုင်သည်။</li>
+          <li>လိုအပ်သောစာရွက်များ: နိုင်ငံကူးလက်မှတ်၊ နိုင်ငံခြားသားမှတ်ပုံတင်ကတ်၊ ကျောင်းတက်ရောက်ကြောင်း ထောက်ခံစာ၊ ကျောင်းမှ သဘောတူညီချက်စာ။</li>
+        </ul>
+        <div class="highlight">⚠️ ခွင့်ပြုချက်မဲ့ အလုပ်လုပ်ခြင်း သို့မဟုတ် နာရီကန့်သတ်ချက်ကျော်လွန်ခြင်းသည် ဗီဇာပယ်ဖျက်ခြင်းနှင့် နိုင်ငံနှင်ထုတ်ခြင်းကို ဖြစ်ပေါ်စေနိုင်သည်။</div>
+      </div>
+    </div>
+
+    <div class="card c2" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📝</div>
+        <div class="card-title">
+          <h3>② အလုပ်သဘောတူညီချက်</h3>
+          <span>စာဖြင့်ရေးသားထားသော စာချုပ်သည် မဖြစ်မနေလိုအပ်သည်</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>ကိုရီးယားအလုပ်သမားဥပဒေသည် နိုင်ငံခြားသားကျောင်းသားများအပါအဝင် အလုပ်သမားအားလုံးအတွက် <strong>စာဖြင့်ရေးသားထားသော စာချုပ်</strong> ချုပ်ဆိုရန် တောင်းဆိုသည်။</li>
+          <li>စာချုပ်တွင် ပါဝင်ရမည့်အချက်များ: လစာပမာဏ၊ အလုပ်ချိန်၊ တာဝန်ဖော်ပြချက်၊ အလုပ်ဌာနနေရာ၊ လစာပေးချိန်။</li>
+          <li>လက်မှတ်ထိုးထားသော <strong>စာချုပ်မိတ္တူ</strong> ရယူပိုင်ခွင့် ရှိသည်။</li>
+          <li>အလုပ်ရှင်က စာချုပ်ပေးရန် ငြင်းဆန်လျှင် ဤသည် <strong>ဥပဒေချိုးဖောက်ခြင်း</strong> ဖြစ်သည်။</li>
+        </ul>
+        <div class="warning">📢 စာချုပ်ပေးရန် ငြင်းဆန်သော အလုပ်ရှင်ကို <strong>အလုပ်သမားဝန်ကြီးဌာနသို့ (1350)</strong> တိုင်ကြားနိုင်သည်။</div>
+      </div>
+    </div>
+
+    <div class="card c3" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title">
+          <h3>③ အနည်းဆုံးလစာ</h3>
+          <span>၂၀၂၆ နှုန်း: နာရီတစ်နာရီ ₩10,320</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>၂၀၂၆ ခုနှစ်အတွက် အနည်းဆုံးလစာမှာ <strong>တစ်နာရီ ₩10,320</strong> ဖြစ်သည်။</li>
+          <li><strong>အပတ်ရက်ပိတ်ကြေး (주휴수당):</strong> တစ်ပတ်လျှင် နာရီ ၁၅ ကျော်နေစဉ် ဆက်တိုက်အလုပ်လုပ်ပါက ထိုနေ့ မအလုပ်မလုပ်ဘဲ တစ်ရက်ပိုလစာ ရယူနိုင်သည်။</li>
+          <li>ဥပမာ: တစ်ပတ် ၂၀ နာရီ ÷ ၅ ရက် × ၁ ရက် = တစ်ပတ်လျှင် ၄ နာရီ အပိုကြေး။</li>
+          <li>အနည်းဆုံးလစာသည် နိုင်ငံသားမဟုတ်ဘဲ <strong>အလုပ်သမားအားလုံး</strong>အတွက် သက်ဆိုင်သည်။</li>
+        </ul>
+        <div class="success">✅ 주휴수당 ပါဝင်သော တကယ့်နာရီနှုန်းမှာ ခန့်မှန်းအားဖြင့် <strong>₩12,384/နာရီ</strong> ဖြစ်သည်။</div>
+      </div>
+    </div>
+
+    <div class="card c4" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">
+          <h3>④ အလုပ်မှနုတ်ထွက်ကြေး (퇴직금)</h3>
+          <span>နိုင်ငံခြားသားကျောင်းသားများလည်း ပိုင်ခွင့်ရှိနိုင်သည်</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>၁ နှစ် သို့မဟုတ် ထို့ထက်ပိုအလုပ်လုပ်ခဲ့ပြီး</strong> ပျမ်းမျှ <strong>တစ်ပတ် နာရီ ၁၅ ကျော်</strong> ဆိုလျှင် ပိုင်ခွင့်ရသည်။</li>
+          <li>ဤအခွင့်အရေးသည် <strong>နိုင်ငံခြားသားကျောင်းသားများ</strong>အတွက်လည်း တန်းတူရည်တူ သက်ဆိုင်သည်။</li>
+          <li>ပမာဏ: လုပ်ကိုင်သောနှစ်တိုင်းအတွက် ပျမ်းမျှ <strong>တစ်လ လစာ</strong> ခန့်ဖြစ်သည်။</li>
+          <li>အလုပ်ထွက်ပြီး ၁၄ ရက်အတွင်း ပေးချေရမည်။</li>
+        </ul>
+        <div class="highlight">📌 အလုပ်ရှင်က ပေးရန် ငြင်းဆန်လျှင် အနီးဆုံးအလုပ်သမားရုံးသို့ သို့မဟုတ် moel.go.kr မှတစ်ဆင့် တိုင်ကြားနိုင်သည်။</div>
+      </div>
+    </div>
+
+    <div class="card c5" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🧾</div>
+        <div class="card-title">
+          <h3>⑤ အခွန်ဆောင်ခြင်း</h3>
+          <span>မေ–ဇွန်: ပေါင်းစည်းဝင်ငွေခွန် ကြေငြာချက်</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>ပေါင်းစည်းဝင်ငွေခွန် ကြေငြာချက်ကို နှစ်တိုင်း <strong>မေ ၁ – ဇွန် ၃၀</strong> ကြားတွင် ဆောင်ရွက်ရသည်။</li>
+          <li>ကိုရီးယားတွင် ဝင်ငွေရှာသော နိုင်ငံခြားသားကျောင်းသားများသည် ကြေငြာချက်ပေးသွင်းရမည်။</li>
+          <li>နှစ်ပတ်လုံး နုတ်ယူခဲ့သောအခွန်ပမာဏ မှန်ကန်မှုမရှိဆိုလျှင် <strong>အခွန်ပြန်အမ်းနိုင်သည်</strong>။</li>
+          <li><strong>hometax.go.kr</strong> တွင် အွန်လိုင်းဆောင်ရွက်နိုင်သည် သို့မဟုတ် <strong>126</strong> သို့ ဖုန်းခေါ်ဆိုနိုင်သည်။</li>
+        </ul>
+        <div class="success">💡 အချိန်ပိုင်းသာ အလုပ်လုပ်ခဲ့သော်လည်း ကြေငြာချက်ပေးသွင်းလျှင် အခွန်ပြန်ရနိုင်သည်!</div>
+      </div>
+    </div>
+
+    <div class="card c6" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">
+          <h3>⑥ Freelancer သတိပေးချက်</h3>
+          <span>3.3% နုတ်ယူမှု — သင့်အခွင့်အရေးကို သိပါ</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>အချို့သောအလုပ်ရှင်များသည် အလုပ်သမားများကို "freelancer" ဟုသတ်မှတ်ကာ 3.3% ခွန်သာ နုတ်ယူသည်။</li>
+          <li>သင်သည် ပုံသေချိန်ဇယားဖြင့် အလုပ်လုပ်ပြီး အကြီးအကဲတစ်ဦးမှ စီမံမည်ဆိုလျှင် — <strong>သင်သည် ဝန်ထမ်းဖြစ်သည်၊ freelancer မဟုတ်ပါ</strong>။</li>
+          <li>ဝန်ထမ်းများကို freelancer ဟု မမှန်ကန်စွာသတ်မှတ်ခြင်းသည် <strong>ကိုရီးယားအလုပ်သမားဥပဒေကို ချိုးဖောက်ခြင်း</strong> ဖြစ်သည်။</li>
+          <li>မမှန်ကန်စွာသတ်မှတ်ခြင်းခံရသော်လည်း အနည်းဆုံးလစာ၊ 주휴수당၊ နုတ်ထွက်ကြေးနှင့် ၄မျိုး ကာမိမှု ရပိုင်ခွင့် ရှိနိုင်သည်။</li>
+        </ul>
+        <div class="danger">🚨 မမှန်ကန်သတ်မှတ်ခြင်းကို သံသယရှိလျှင် အလုပ်သမားစစ်ဆေးရေးရုံး (1350) သို့ သို့မဟုတ် moel.go.kr မှ တိုင်ကြားပါ။</div>
+      </div>
+    </div>
+
+    <div class="card c7" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">
+          <h3>⑦ ၄မျိုး လူမှုအကာအကွယ်</h3>
+          <span>ကျန်းမာရေး၊ အလုပ်အကိုင်၊ အလုပ်ဒဏ်ရာ၊ ပင်စင်</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>ကျန်းမာရေးအာမခံ (건강보험):</strong> ဆေးကုစားခ ကာမိသည်။ အလုပ်သမားအများစုအတွက် မဖြစ်မနေ လိုအပ်သည်။</li>
+          <li><strong>အလုပ်အကိုင် အာမခံ (고용보험):</strong> အလုပ်လက်မဲ့ ကျောကုပ် ပေးသည်။ D-2 ကျောင်းသားများ ပါဝင်နိုင်သည်။</li>
+          <li><strong>အလုပ်ဒဏ်ရာ အာမခံ (산재보험):</strong> အလုပ်ခွင်ဒဏ်ရာများအတွက် လျော်ကြေးပေးသည်။ ဗီဇာမည်သို့ပင်ဖြစ်ဖြစ် <strong>အလုပ်သမားအားလုံး</strong>သတ်ဆိုင်သည်။</li>
+          <li><strong>အမျိုးသားပင်စင် (국민연금):</strong> နှစ်ဖက်သဘောတူညီချက်ရှိသောနိုင်ငံမှ နိုင်ငံသားများ ပါဝင်ရနိုင် သို့မဟုတ် ကင်းလွတ်ခွင့်ရနိုင်သည်။</li>
+        </ul>
+        <div class="warning">📢 မဖြစ်မနေ ကာမိမှုတွင် ပါဝင်မပေးသော အလုပ်ရှင်ကို <strong>အမျိုးသားကျန်းမာရေး အာမခံ</strong>သို့ သို့မဟုတ် <strong>1350</strong> သို့ တိုင်ကြားနိုင်သည်။</div>
+      </div>
+    </div>
+
+    <div class="card c8" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📞</div>
+        <div class="card-title">
+          <h3>⑧ လစာမပေးလျှင် ဆောင်ရွက်ရမည့်နည်းလမ်း</h3>
+          <span>အလုပ်ရှင်မပေးလျှင် ဘာလုပ်ရမလဲ</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>1350</strong> သို့ ဖုန်းဆက်ပါ — အလုပ်သမားဝန်ကြီးဌာနဟော့လိုင်း (ဘာသာစကားအများအပြားဖြင့် ရရှိနိုင်သည်)။</li>
+          <li><strong>moel.go.kr</strong> တွင် အွန်လိုင်း တိုင်ကြားစာ တင်သွင်းနိုင်သည်။</li>
+          <li>သက်သေများ သိမ်းထားပါ: လစာဘောင်ချာ၊ ဘဏ်ငွေလွှဲ၊ အလုပ်ဇယား၊ မက်ဆေ့ချ်များ။</li>
+          <li>အခမဲ့ ဥပဒေဆိုင်ရာ အကူအညီ: <strong>ကိုရီးယားဥပဒေဆိုင်ရာ အကူအညီပေးသောနေရာ (132)</strong>။</li>
+          <li>ကာလကန့်သတ်ချက်: လစာမပေးသောနေ့မှ <strong>၃ နှစ်</strong>အတွင်း တိုင်ကြားနိုင်သည်။</li>
+        </ul>
+        <div class="success">✅ အစိုးရသည် လစာခိုးမှုကိစ္စများတွင် အခမဲ့ အကြံပေးမှုနှင့် ကူညီပံ့ပိုးမှုများ ပံ့ပိုးသည်။</div>
+      </div>
+    </div>
+
+    <div class="card c9" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">
+          <h3>⑨ တိုင်ကြားခြင်းသည် ဗီဇာကို မထိခိုက်ပါ</h3>
+          <span>အခွင့်အရေးများ ကာကွယ်ဆောင်ရွက်သောအခါ ဗီဇာ ဘေးကင်းသည်</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>အလုပ်သမားချိုးဖောက်မှုများ တိုင်ကြားခြင်းသည် ဗီဇာဝင်ရောက်ခွင့်ကို မထိခိုက်ပါ။</strong></li>
+          <li>ကိုရီးယားဥပဒေသည် တိုင်ကြားချက်တင်သောအလုပ်သမားများကို ကာကွယ်သည် — အလုပ်ရှင်သည် ဥပဒေအရ တုံ့ပြန်ချက်မပြုနိုင်ပါ။</li>
+          <li>ဗီဇာအခြေအနေနှင့် နေထိုင်မှုသည် အလုပ်သမားအငြင်းပွားမှု ဖြေရှင်းမှုနှင့် လုံးလုံးကွဲပြားသည်။</li>
+          <li>ရွှေ့ပြောင်းမှုဌာနသည် တရားဝင်အလုပ်သမားအခွင့်အရေးများ ကျင့်သုံးသည့် ကျောင်းသားများကို အပြစ်ဒဏ်ချမှတ်မည် မဟုတ်ပါ။</li>
+        </ul>
+        <div class="success">🛡️ ဗီဇာကို ကြောက်ရွံ့မှုကြောင့် ဥပဒေအရ ကိုယ်ပိုင်ပိုင်ဆိုင်ခွင့်ရှိသောအရာကို တောင်းဆိုမည်ကို ရပ်တန့်မပါနှင့်။</div>
+        <div class="highlight">📌 အရေးကြီးသော ဆက်သွယ်ရမည့်နေရာ: အလုပ်သမားဟော့လိုင်း <strong>1350</strong> | အခွန် <strong>126</strong> | ဥပဒေကူညီမှု <strong>132</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ CHINESE ============================================================ -->
+<div id="panel-zh" class="lang-panel">
+<div class="container">
+  <div class="intro-box">
+    ℹ️ <strong>致在韩国工作的国际留学生</strong><br>
+    作为韩国的外国留学生，您享有与韩国劳动者相同的劳动权利。本指南涵盖9个重要主题，帮助您安全合法地工作。
+  </div>
+  <div class="topic-grid">
+
+    <div class="card c1" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">
+          <h3>① 工作许可条件</h3>
+          <span>D-2签证工作时限及申请方法</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>D-2签证持有者在学期期间每周最多可工作 <strong>20小时</strong>。</li>
+          <li>在<strong>官方假期期间</strong>，无时间限制，可无限制工作。</li>
+          <li>开始工作前必须向出入境管理局申请<strong>兼职工作许可 (시간제 취업허가)</strong>。</li>
+          <li>可通过 <strong>HiKorea (hikorea.go.kr)</strong> 在线申请，或亲自前往最近的出入境管理局。</li>
+          <li>所需材料：护照、外国人登录证、在学证明、学校同意书。</li>
+        </ul>
+        <div class="highlight">⚠️ 未经许可工作或超出工作时限可能导致签证取消和被驱逐出境。请先向学校国际事务处确认。</div>
+      </div>
+    </div>
+
+    <div class="card c2" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📝</div>
+        <div class="card-title">
+          <h3>② 劳动合同</h3>
+          <span>书面合同是法律规定的义务</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>韩国劳动法<strong>要求对所有劳动者（包括外国留学生）签订书面劳动合同</strong>。</li>
+          <li>合同必须包含：工资金额、工作时间、工作内容、工作地点及工资支付日期。</li>
+          <li>您有权获得<strong>一份已签署合同的副本</strong>。</li>
+          <li>如果雇主拒绝提供书面合同，这是<strong>违法行为</strong>。</li>
+        </ul>
+        <div class="warning">📢 可向<strong>劳动部（1350）</strong>举报拒绝提供书面合同的雇主。</div>
+      </div>
+    </div>
+
+    <div class="card c3" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title">
+          <h3>③ 最低工资</h3>
+          <span>2026年标准：每小时₩10,320</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>2026年最低工资为<strong>每小时₩10,320</strong>。</li>
+          <li><strong>周休津贴（주휴수당）：</strong>如果您每周持续工作15小时以上，即使那天不上班，每周也可获得额外一天的工资。</li>
+          <li>示例：每周20小时 ÷ 5天 × 1天 = 每周额外4小时工资。</li>
+          <li>最低工资适用于<strong>所有劳动者</strong>，无论国籍或签证类型。</li>
+        </ul>
+        <div class="success">✅ 含주휴수당的实际时薪约为<strong>₩12,384/小时</strong>。</div>
+      </div>
+    </div>
+
+    <div class="card c4" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">
+          <h3>④ 退职金（퇴직금）</h3>
+          <span>外国留学生同样可能有资格获得</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>如果您工作满<strong>1年以上</strong>且平均每周工作<strong>15小时以上</strong>，即可获得退职金。</li>
+          <li>此权利同样平等适用于<strong>外国留学生</strong>，与国籍无关。</li>
+          <li>金额：约为<strong>每工作一年支付一个月平均工资</strong>。</li>
+          <li>必须在离职后14天内支付。</li>
+        </ul>
+        <div class="highlight">📌 如雇主拒绝支付，可向最近的劳动局或通过moel.go.kr提出申诉。</div>
+      </div>
+    </div>
+
+    <div class="card c5" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🧾</div>
+        <div class="card-title">
+          <h3>⑤ 税务申报</h3>
+          <span>5–6月：综合所得税申报</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>综合所得税申报（종합소득세 신고）每年在<strong>5月1日至6月30日</strong>期间进行。</li>
+          <li>在韩国有收入的外国留学生必须进行申报。</li>
+          <li>如全年预扣税款过多，<strong>可能获得退税</strong>。</li>
+          <li>可通过<strong>hometax.go.kr</strong>在线申报，或拨打<strong>126</strong>寻求帮助。</li>
+          <li>根据韩国与您本国的税收协定，部分收入可能免税。</li>
+        </ul>
+        <div class="success">💡 即使只是兼职工作，提交申报单也可能获得退税！不要错过！</div>
+      </div>
+    </div>
+
+    <div class="card c6" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">
+          <h3>⑥ 自由职业者警告</h3>
+          <span>3.3%预扣税 — 了解您的权利</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>部分雇主将员工归类为"自由职业者"，仅预扣3.3%的税款。</li>
+          <li>如果您按固定时间表工作、遵守上班时间并受上级管理——<strong>您是员工，而非自由职业者</strong>。</li>
+          <li>将员工错误归类为自由职业者，是<strong>违反韩国劳动法的违法行为</strong>。</li>
+          <li>即使被错误归类，您仍可能有权获得最低工资、주휴수당、退职金及四大保险。</li>
+        </ul>
+        <div class="danger">🚨 如怀疑被错误归类，请向劳动基准监察署（1350）或通过moel.go.kr举报。</div>
+      </div>
+    </div>
+
+    <div class="card c7" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">
+          <h3>⑦ 四大社会保险</h3>
+          <span>健康、就业、工伤、养老保险</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>健康保险（건강보험）：</strong>覆盖医疗费用。大多数劳动者必须参加。</li>
+          <li><strong>就业保险（고용보险）：</strong>提供失业救济。D-2签证留学生可以参保。</li>
+          <li><strong>工伤保险（산재보险）：</strong>赔偿工作场所伤害。适用于<strong>所有劳动者</strong>，无论签证类型。</li>
+          <li><strong>国民年金（국민연금）：</strong>与韩国签有互惠协议国家的外国人可能可以参保或豁免。</li>
+          <li>如雇主未为您办理保险，这是违规行为，可以举报。</li>
+        </ul>
+        <div class="warning">📢 向<strong>国家健康保险公团</strong>或拨打<strong>1350</strong>举报未为员工办理强制保险的雇主。</div>
+      </div>
+    </div>
+
+    <div class="card c8" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">📞</div>
+        <div class="card-title">
+          <h3>⑧ 欠薪应对方法</h3>
+          <span>雇主不支付工资时该怎么办</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>拨打<strong>1350</strong>——劳动部热线电话（提供多语言服务）。</li>
+          <li>通过<strong>moel.go.kr</strong>在线提交投诉。</li>
+          <li>保留证据：工资单、银行转账记录、工作日程表和短信记录。</li>
+          <li>可通过<strong>韩国法律援助公团（132）</strong>获得免费法律援助。</li>
+          <li>诉讼时效：在欠薪日期起<strong>3年内</strong>提出申请。</li>
+        </ul>
+        <div class="success">✅ 政府为工资盗窃案件提供免费咨询和支持服务。您受法律保护。</div>
+      </div>
+    </div>
+
+    <div class="card c9" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">
+          <h3>⑨ 举报不影响签证</h3>
+          <span>维权时签证是安全的</span>
+        </div>
+        <div class="card-toggle">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>举报劳动权利侵害不会影响您的签证状态。</strong></li>
+          <li>韩国法律保护提出申诉的劳动者——雇主在法律上不能进行报复。</li>
+          <li>签证状态和居留权与劳动纠纷处理程序完全分离。</li>
+          <li>移民管理局不会因留学生行使合法劳动权利而给予处罚。</li>
+        </ul>
+        <div class="success">🛡️ 不要因为害怕签证后果而放弃追讨您依法应得的权益。您的权利受到保护。</div>
+        <div class="highlight">📌 重要联系方式：劳动权益热线 <strong>1350</strong> | 税务咨询 <strong>NTS 126</strong> | 法律援助 <strong>132</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<footer>
+  <p>Information based on Korean Labor Standards Act | Last updated: 2026 | For legal advice, consult a professional or call 1350</p>
+</footer>
+
+<script>
+  function switchLang(lang) {
+    document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + lang).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleCard(card) {
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
